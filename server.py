@@ -1,14 +1,18 @@
 from flask import Flask, render_template, jsonify, url_for
 from flask import request
 
+import marketDataRetrieval as market  
+
 import requests
 
 import os
 
 app = Flask(__name__, static_url_path='/static')
 
-@app.route('/')
+@app.route('/', methods =['GET', 'POST'])
 def startPage():
+    if request.method == 'POST':
+        return market.getData(tradingSymbol)
     return "Hello World"
 
 
