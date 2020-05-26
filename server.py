@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, url_for
 from flask import request
 
-import marketDataRetrieval as market  
+import marketDataRetrieval as market
 
 import requests
 
@@ -13,7 +13,7 @@ app = Flask(__name__, static_url_path='/static')
 def startPage():
     if request.method == 'POST':
         return market.getData(tradingSymbol)
-    return "Hello World"
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
