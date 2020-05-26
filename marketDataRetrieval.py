@@ -58,16 +58,14 @@ def retrievals():
     print("\nStandard Deviation Retrieval")
     print(standardDeviation)
 
-    #Brownian Motion equation
-    #r = drift + standardDeviation * (e^r)
-
-    #prediction of future stock price based on simulation below using numpy for storing data into array
-    #print(type(drift))
 
 #calling of function
 retrievals()
 
+#Brownian Motion equation
+#r = drift + standardDeviation * (e^r)
 
+#prediction of future stock price based on simulation below using numpy for storing data into array
 np.array(drift)
 drift.values
 standardDeviation.values
@@ -77,6 +75,18 @@ norm.ppf(0.95)
 
 #10 x 2 Matrix
 x = np.random.rand(10,2)
-print(x)
-j
-s
+norm.ppf(x)
+
+#stores distances from the mean value, 0, into the 10 x 2 matrix
+Z = norm.ppf(np.random.rand(10,2))
+
+
+
+#time interval for the stock price forecast
+timeInterval = 365
+iterations = 10
+
+#r = drift + standardDeviation * (e^r)
+dailyReturns = np.exp(drift.values + standardDeviation.values * norm.ppf(np.random.rand(timeInterval,iterations)))
+#10 sets of 365 random future stock prices of the ticker symbol
+print(dailyReturns)
