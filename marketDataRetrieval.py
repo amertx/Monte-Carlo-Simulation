@@ -1,3 +1,6 @@
+#Prediction model using an instance of the Monte Carlo simulation and Brownian Motion equation
+
+
 #import of libraries
 import numpy as np
 import pandas as pd
@@ -28,30 +31,52 @@ plt.show()
 log_returns.plot(figsize = (10,6))
 plt.show()
 
-#All retrievals are using Pandas Series Library
-print("\nMean Retrieval")
+
+#calculations
 averageDailyReturn = log_returns.mean()
-print(averageDailyReturn)
-
-#variance represents how spread out the data is from the average
-#variance will represent the best way to represent the variability and volatility
-print("\nVariance Retrieval")
 variance = log_returns.var()
-print(variance)
-
-#drift calculation
-#Drift = averageDailyReturn-(variance/2)
-print("\nDrift calculation")
 drift = averageDailyReturn-(variance/2)
-print(drift)
-
-#standard deviation calculation
 standardDeviation = log_returns.std()
-print("\nStandard Deviation Retrieval")
-print(standardDeviation)
 
-#Brownian Motion equation
-#r = drift + standardDeviation * (e^r)
 
-#prediction of future stock price based on simulation below using numpy for storing data into array
-print(type(drift))
+def retrievals():
+    #All retrievals are using Pandas Series Library
+    print("\nMean Retrieval")
+    print(averageDailyReturn)
+
+    #variance represents how spread out the data is from the average
+    #variance will represent the best way to represent the variability and volatility
+    print("\nVariance Retrieval")
+    print(variance)
+
+    #drift calculation
+    #Drift = averageDailyReturn-(variance/2)
+    print("\nDrift calculation")
+    print(drift)
+
+    #standard deviation calculation
+    print("\nStandard Deviation Retrieval")
+    print(standardDeviation)
+
+    #Brownian Motion equation
+    #r = drift + standardDeviation * (e^r)
+
+    #prediction of future stock price based on simulation below using numpy for storing data into array
+    #print(type(drift))
+
+#calling of function
+retrievals()
+
+
+np.array(drift)
+drift.values
+standardDeviation.values
+
+#Brownian motion variable correlating to the distance between the mean and the number of standard deviation
+norm.ppf(0.95)
+
+#10 x 2 Matrix
+x = np.random.rand(10,2)
+print(x)
+j
+s
