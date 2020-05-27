@@ -11,21 +11,18 @@ from scipy.stats import norm
 #ticker selection
 tradingSymbol = input("Enter a trading symbol: ")
 data = pd.DataFrame()
-data[tradingSymbol] = wb.DataReader(tradingSymbol, data_source='yahoo', start='2010-1-1')['Adj Close']
-
+data[tradingSymbol] = wb.DataReader(tradingSymbol, data_source='yahoo', start='2019-1-1')['Adj Close']
 #percent change of asset price
 log_returns = np.log(1+ data.pct_change())
 
 print("\nHead Data")
 print(log_returns.head())
-
 print("\nTail Data")
 print(log_returns.tail())
 
 #graph showing growth over time beginning from 2015
 data.plot(figsize = (10,6));
 plt.show()
-
 #graph of log returns of input ticker
 #returns are normally distributed and have a consistent mean
 log_returns.plot(figsize = (10,6))
@@ -84,9 +81,26 @@ Z = norm.ppf(np.random.rand(10,2))
 
 #time interval for the stock price forecast
 timeInterval = 365
-iterations = 10
+iterations = 5
 
 #r = drift + standardDeviation * (e^r)
-dailyReturns = np.exp(drift.values + standardDeviation.values * norm.ppf(np.random.rand(timeInterval,iterations)))
 #10 sets of 365 random future stock prices of the ticker symbol
+dailyReturns = np.exp(drift.values + standardDeviation.values * norm.ppf(np.random.rand(timeInterval,iterations)))
 print(dailyReturns)
+
+#returns into price points
+presentPrice = data.iloc[-1]
+print(presentPrice)
+priceList = np.zeros_like(dailyReturns)
+priceList[0] = presentPrice
+#iteration for the time interavl of 365
+for t in range(1, timeInterval):
+    priceList[t] = priceList[t-1] * dailyReturns[t]
+
+print(priceList[-1])
+#showcases 10 paths of the future stock price
+plt.figure(figsize =(10,6))
+plt.plot(priceList)
+plt.show()
+
+exit()
