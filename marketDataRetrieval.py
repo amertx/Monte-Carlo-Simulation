@@ -11,7 +11,7 @@ from scipy.stats import norm
 #ticker selection
 tradingSymbol = input("Enter a trading symbol: ")
 data = pd.DataFrame()
-data[tradingSymbol] = wb.DataReader(tradingSymbol, data_source='yahoo', start='2019-1-1')['Adj Close']
+data[tradingSymbol] = wb.DataReader(tradingSymbol, data_source='yahoo', start='2010-1-1')['Adj Close']
 #percent change of asset price
 log_returns = np.log(1+ data.pct_change())
 
@@ -80,7 +80,7 @@ Z = norm.ppf(np.random.rand(10,2))
 
 
 #time interval for the stock price forecast
-timeInterval = 365
+timeInterval = 30
 iterations = 5
 
 #r = drift + standardDeviation * (e^r)
