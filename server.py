@@ -2,7 +2,9 @@
 from flask import Flask, render_template, jsonify, url_for
 from flask import request
 
-import marketDataRetrieval as market
+# to have the webpage run the marketDataRetrieval needs to be correctly formatted
+# right now it gets messed up when its trying to
+# import marketDataRetrieval as market
 
 import requests
 
@@ -13,7 +15,9 @@ app = Flask(__name__, static_url_path='/static')
 @app.route('/', methods =['GET', 'POST'])
 def startPage():
     if request.method == 'POST':
-        return market.getData(tradingSymbol)
+        # inputData = market.getData(tradingSymbol)
+        # a flask route function returns html (or a html render_template)
+        return render_template('example.html', data = ["string", "variable", "anything else"])
     return render_template('index.html')
 
 
