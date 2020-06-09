@@ -15,10 +15,13 @@ app = Flask(__name__, static_url_path='/static')
 @app.route('/', methods =['GET', 'POST'])
 def startPage():
     if request.method == 'POST':
+        stockTicker = request.form.get("tradingSymbol")
         # inputData = market.getData(tradingSymbol)
         # a flask route function returns html (or a html render_template)
-        return render_template('example.html', data = ["string", "variable", "anything else"])
-    return render_template('index.html')
+        createPlot(stockTicker)
+
+        return render_template('index.html', stockTick = "")
+    return render_template('index.html', stockTick= "")
 
 
 if __name__ == "__main__":
