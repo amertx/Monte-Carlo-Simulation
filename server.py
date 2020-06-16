@@ -1,31 +1,21 @@
 
-from flask import Flask, render_template, jsonify, url_for
-from flask import request, Response
-
-# to have the webpage run the marketDataRetrieval needs to be correctly formatted
-# right now it gets messed up when its trying to
-# import marketDataRetrieval as market
-
-from matplotlib.backends.backend_agg import FigureCanvasAgg
-from matplotlib.backends.backend_svg import FigureCanvasSVG
-
-
-from matplotlib.figure import Figure
-
+import matplotlib
+matplotlib.use('Agg')
 import requests
-
 import random
-
 import os
-
 import io
-
 import numpy as np
 import pandas as pd
-from pandas_datareader import data as wb
 import matplotlib.pyplot as plt
-from scipy.stats import norm
 
+from flask import Flask, render_template, jsonify, url_for
+from flask import request, Response
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+from matplotlib.backends.backend_svg import FigureCanvasSVG
+from matplotlib.figure import Figure
+from pandas_datareader import data as wb
+from scipy.stats import norm
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -46,6 +36,7 @@ def startPage():
 
 @app.route("/matplot-as-image-<stockTick>.png")
 def graph(stockTick):
+
     data = pd.DataFrame()
     data[stockTick] = wb.DataReader(stockTick, data_source='yahoo', start='2010-1-1')['Adj Close']
     #percent change of asset price
@@ -68,9 +59,7 @@ def graph(stockTick):
 
     #Brownian Motion equation
     #r = drift + standardDeviation * (e^r)
-
     #prediction of future stock price based on simulation below using numpy for storing data into array
-
     np.array(drift)
     drift.values
     standardDeviation.values
@@ -85,11 +74,9 @@ def graph(stockTick):
     #stores distances from the mean value, 0, into the 10 x 2 matrix
     Z = norm.ppf(np.random.rand(10,2))
 
-
-
     #time interval for the stock price forecast
     timeInterval = 365
-    iterations = 5
+    iterations = 10
 
     #r = drift + standardDeviation * (e^r)
     #10 sets of 365 random future stock prices of the ticker symbol
@@ -107,15 +94,23 @@ def graph(stockTick):
     #showcases 10 paths of the future stock price
     plt.figure(figsize =(10,6))
     plt.plot(priceList)
+    plt.xlabel("Days")
+    plt.ylabel("Price $ Value")
+
 
     fig = Figure()
     axis = fig.add_subplot(1, 1, 1)
     axis.plot(priceList)
+    axis.set_ylabel("Price $ Value")
+    axis.set_xlabel("Days")
+    axis.set_title(stockTick)
+
 
     output = io.BytesIO()
     FigureCanvasAgg(fig).print_png(output)
     return Response(output.getvalue(), mimetype="image/png")
 
+#local deployment on  flask server
 if __name__ == "__main__":
     app.debug = True
     port = int(os.environ.get('PORT', 5000))
