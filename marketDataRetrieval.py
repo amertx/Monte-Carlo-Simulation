@@ -37,7 +37,6 @@ def mainFunction(tradingSymbol):
 
 #prediction of future stock price based on simulation below using numpy for storing data into array
 
-def prediction():
     np.array(drift)
     drift.values
     standardDeviation.values
