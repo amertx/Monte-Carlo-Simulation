@@ -55,8 +55,17 @@ h1, h2, h3, h4, h5, h6 {
 
   </div>
 </div>
+<div>
+<table class="w3-table w3-bordered w3-large w3-centered">
+    {% for price in priceList[-1] %}
+          <tr>
+            <td> {{price}} </td>
+          </tr>
+          {% endfor %}
+</table>
 
 
+</div>
     </div>
   </div>
 </body>
