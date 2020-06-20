@@ -4,6 +4,6 @@
   * __API's Used__: Yahoo Finance
   * __Derived Equations__:
   
-  ![alt text](https://github.com/amertx/Monte-Carlo-Simulation/blob/master/Screen%20Shot%202020-06-20%20at%203.56.47%20PM.png)
-  ![alt text](https://github.com/amertx/Monte-Carlo-Simulation/blob/master/Screen%20Shot%202020-06-20%20at%203.55.53%20PM.png)
+  ![alt text](https://github.com/amertx/Monte-Carlo-Simulation/blob/master/Screen%20Shot%202020-06-20%20at%203.56.47%20PM.png) 
+  ![alt text](https://github.com/amertx/Monte-Carlo-Simulation/blob/master/Screen%20Shot%202020-06-20%20at%203.55.53%20PM.png | width=100)
 
