@@ -39,6 +39,7 @@ h1, h2, h3, h4, h5, h6 {
       <br>
       <h1><b>How to use the simulation?</b></h1>
       <p>Enter a ticker symbol to view graphical variations and forecasts of the future price of the stock or ETF </p>
+
       <br>
       <h3>1 Year forecast with 10 iterations of the future trajectory</h3>
       <div>
@@ -52,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
   <a href = "/">Enter another symbol here</a>
   <div>
-    <h2> Future Prices </h2>
+    <h2> Future Prices Per Share </h2>
 
   </div>
 </div>
@@ -60,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 <table class="w3-table w3-bordered w3-large w3-centered">
     {% for price in priceList[-1] %}
           <tr>
-            <td> {{price}} </td>
+            <td> ${{price}} </td>
           </tr>
           {% endfor %}
 </table>
