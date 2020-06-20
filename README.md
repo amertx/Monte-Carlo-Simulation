@@ -3,3 +3,5 @@
   * __Tech Stack__: Flask, Herkou
   * __API's Used__: Yahoo Finance
   
+  ![alt text](https://github.com/amertx/Monte-Carlo-Simulation/blob/master/Screen%20Shot%202020-06-20%20at%203.55.53%20PM.png)
+  
