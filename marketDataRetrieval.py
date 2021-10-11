@@ -11,7 +11,7 @@ from scipy.stats import norm
 #ticker selection
 def mainFunction(tradingSymbol):
     data = pd.DataFrame()
-    data[tradingSymbol] = wb.DataReader(tradingSymbol, data_source='yahoo', start='2010-1-1')['Adj Close']
+    data[tradingSymbol] = wb.DataReader(tradingSymbol, data_source='yahoo', start='2019-1-1')['Adj Close']
     #percent change of asset price
     log_returns = np.log(1+ data.pct_change())
 
